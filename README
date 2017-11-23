@@ -1,0 +1,11 @@
+currently adds file with name Hello.txt, content "Hello World!"
+then uploads it, change to upload a file from command line arg.
+first use cron of some kind to check the thunderbird data folder
+process flow is on trigger from folder from thunderbird, the email asking for a file has been recieved
+on that, call drive.py with the file as a command line arg,
+then delete the email
+
+second portion is another cron job, on a new file addition which will create a non-null diff, take ls -R to a file
+and then upload that to "files.txt" in the drive folder, or something like that.
+
+That ought to be that!
