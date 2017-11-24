@@ -11,13 +11,16 @@ and then upload that to "files.txt" in the drive folder, or something like that.
 That ought to be that!
 
 
-Mail is in, but refresh might not work, who knows
+
 
 
 crontab should read:
 
-*/10 * * * * python mail.py > /dev/null
+*/N * * * * ./main.sh > /dev/null
+
+where N is minutes between run
 
 
-./main.sh 
-works as intended, need to make sure refreshing works. Progress!!
+drive.py does not get refresh tokens and thus times out. Change to store refresho tokens
+
+besides that and authorization, everything else should work!
