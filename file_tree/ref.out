@@ -1,0 +1,16 @@
+README
+drive.py
+drive_client_secret.json
+drive_native.py
+file_tree
+mail.py
+mail_client_secret.json
+main.sh
+settings.yaml
+signal_out
+this.txt
+
+../file_tree:
+files.sh
+ref.out
+temp.out
