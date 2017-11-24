@@ -5,7 +5,7 @@ gauth = GoogleAuth("file")
 
 
 # Try to load saved client credentials
-# gauth.LoadCredentialsFile("credentials.json")
+gauth.LoadCredentialsFile("credentials.json")
 
 if gauth.credentials is None:
     # Authenticate if they're not there
@@ -22,6 +22,11 @@ gauth.SaveCredentialsFile("credentials.json")
 
 drive = GoogleDrive(gauth)
 
-file1 = drive.CreateFile({'title': 'Hello.txt'})  # Create GoogleDriveFile instance with title 'Hello.txt'.
-file1.SetContentString('12Hello World!') # Set content of the file from given string.
+with open("signal_out") as infile:
+    for line in infile:
+        if "Path: " in line:
+            upload_path = line[line.find("Path:") + 6:]
+print("path is: " + upload_path)
+file1 = drive.CreateFile({'title': upload_path.split("/")[-1]})  # Create GoogleDriveFile instance with title 'Hello.txt'.
+file1.SetContentFile(upload_path)
 file1.Upload()

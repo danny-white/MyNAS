@@ -9,3 +9,15 @@ second portion is another cron job, on a new file addition which will create a n
 and then upload that to "files.txt" in the drive folder, or something like that.
 
 That ought to be that!
+
+
+Mail is in, but refresh might not work, who knows
+
+
+crontab should read:
+
+*/10 * * * * python mail.py > /dev/null
+
+
+./main.sh 
+works as intended, need to make sure refreshing works. Progress!!
