@@ -12,7 +12,9 @@ That ought to be that!
 
 
 
+usage is python drive --source SOURCE_FILEPATH
 
+signal can be arbitrary, but must contain "Path: Path/To/File" followed by a newline
 
 crontab should read:
 

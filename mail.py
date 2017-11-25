@@ -20,7 +20,7 @@ except ImportError:
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/gmail-python-quickstart.json
 SCOPES = 'https://mail.google.com/'
-CLIENT_SECRET_FILE = 'mail_client_secret.json'
+CLIENT_SECRET_FILE = '.client_secrets/mail_client_secret.json'
 APPLICATION_NAME = 'Gmail API Python Quickstart'
 
 
@@ -141,9 +141,16 @@ def main():
 
     message = GetMessage(service, user_id, mail_id)
 
+    
+
+    for line in message["snippet"].split("\n"):
+        if "Path: " in line:
+            filepath = line[line.find("Path: ") + 6:]
+
+
     with open("signal_out", "w") as outfile:
-        outfile.write(message["snippet"])
-        print("out path is:" + message["snippet"])
+        outfile.write(filepath)
+        print("out path is: " + filepath)
 
     DeleteMessage(service, user_id, mail_id)
   
