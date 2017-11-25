@@ -73,10 +73,9 @@ def upload_file(drive_service, filepath):
   file_metadata = {'name': filepath.split("/")[-1]}
   mime_type = mimetypes.guess_type(filepath)[0]
   media = MediaFileUpload(filepath,
-                          mimetype=mime_type)
+                          mimetype=mime_type, resumable=True)
 
   file = drive_service.files().create(body = file_metadata, media_body=media, fields = "id").execute()
-  return file
 
 
 def main():
