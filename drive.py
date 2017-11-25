@@ -72,11 +72,13 @@ def upload_file(drive_service, filepath):
 
   file_metadata = {'name': filepath.split("/")[-1]}
   mime_type = mimetypes.guess_type(filepath)[0]
+  # todo I don't know if this actually works, might need to do some next_chunk shenanigans
+  # make sure to use the right version of the API
+  # https://google.github.io/google-api-python-client/docs/epy/googleapiclient.http.HttpRequest-class.html#next_chunk
   media = MediaFileUpload(filepath,
                           mimetype=mime_type, resumable=True)
 
   file = drive_service.files().create(body = file_metadata, media_body=media, fields = "id").execute()
-
 
 def main():
     """Shows basic usage of the Google Drive API.
